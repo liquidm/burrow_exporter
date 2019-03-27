@@ -18,3 +18,5 @@
 burrow-exporter
 dist/
 vendor/
+bin/
+.go/

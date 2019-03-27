@@ -1,0 +1,15 @@
+kind: pipeline
+name: default
+
+image_pull_secrets:
+  - DOCKER_CONFIG_JSON
+
+steps:
+  - name: publish-artifact
+    image: registry.build.lqm.io/golang
+    environment:
+      GSUTIL_CONFIG_JSON:
+        from_secret: GSUTIL_CONFIG_JSON
+    commands:
+      - gsutil-login.sh
+      - make publish-artifact
